@@ -15,7 +15,7 @@ Python programlama becerilerini test etmek için tasarlanmış interaktif bir we
 
 1. Projeyi klonlayın:
 ```bash
-git clone https://github.com/yourusername/python-pro-quiz.git
+git clone https://github.com/nuryagli/python-pro-quiz.git
 cd python-pro-quiz
 ```
 
