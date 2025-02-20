@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h2 class="text-center mb-0">Quiz Sonuçları</h2>
+        </div>
+        <div class="card-body text-center">
+            <h3>Son Quiz Puanınız: {{ current_user.last_score }}</h3>
+            <h4>En Yüksek Puanınız: {{ current_user.highest_score }}</h4>
+            
+            <div class="mt-4">
+                <a href="{{ url_for('quiz') }}" class="btn btn-primary">Yeni Quiz Başlat</a>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Ana Sayfaya Dön</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

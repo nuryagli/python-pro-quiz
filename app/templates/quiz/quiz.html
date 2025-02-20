@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz - Python Quiz{% endblock %}
+
+{% block content %}
+<div class="quiz-container">
+    <div class="score-display">
+        <div class="row">
+            <div class="col-md-6">
+                <strong>Genel En Yüksek Puan:</strong> {{ highest_score }}%
+            </div>
+            <div class="col-md-6 text-md-end">
+                <strong>Sizin En Yüksek Puanınız:</strong> {{ current_user.highest_score }}%
+            </div>
+        </div>
+    </div>
+
+    <form method="POST" action="{{ url_for('quiz.submit_quiz') }}" id="quizForm">
+        {% for question in questions %}
+        <div class="question-box" id="question-{{ loop.index }}">
+            <h4>Soru {{ loop.index }}: {{ question.question }}</h4>
+            
+            <label class="radio-option">
+                <input type="radio" name="question_{{ question.id }}" value="a" required>
+                {{ question.option_a }}
+            </label>
+            
+            <label class="radio-option">
+                <input type="radio" name="question_{{ question.id }}" value="b">
+                {{ question.option_b }}
+            </label>
+            
+            <label class="radio-option">
+                <input type="radio" name="question_{{ question.id }}" value="c">
+                {{ question.option_c }}
+            </label>
+            
+            <label class="radio-option">
+                <input type="radio" name="question_{{ question.id }}" value="d">
+                {{ question.option_d }}
+            </label>
+        </div>
+        {% endfor %}
+        
+        <button type="submit" class="submit-button" id="submitQuiz">Sınavı Bitir</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById('quizForm').addEventListener('submit', function(e) {
+    const submitButton = document.getElementById('submitQuiz');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Gönderiliyor...';
+});
+</script>
+{% endblock %}
